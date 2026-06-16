@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pfizer España · IA 2026–2030</title>
+<meta name="description" content="Escenario plausible sobre el impacto de la inteligencia artificial en Pfizer España entre 2026 y 2030. Una herramienta para el comité de dirección, no una predicción cerrada.">
+<style>
+@font-face{font-family:'et-book';src:url('https://cdn.jsdelivr.net/npm/tufte-css@1.8.0/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'et-book';src:url('https://cdn.jsdelivr.net/npm/tufte-css@1.8.0/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff') format('woff');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'et-book';src:url('https://cdn.jsdelivr.net/npm/tufte-css@1.8.0/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff') format('woff');font-weight:700;font-style:normal;font-display:swap;}
+
+/* Estética editorial (AI-2027 / Tufte): serif, fondo cálido, rojo oscuro, navegación fija y scrollytelling. */
+:root{
+  --bg:#fffff8;
+  --ink:#111111;
+  --ink-2:#333333;
+  --ink-3:#55534c;
+  --faint:#8c8a80;
+  --rule:#e3dfd2;
+  --rule-2:#cfcabb;
+  --red:#8b0000;
+  --green:#2a623d;
+  --blue:#2c5985;
+  --ochre:#8a5e00;
+  --serif:'et-book',Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --nav-h:48px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--serif);font-size:20px;line-height:1.55;
+  font-feature-settings:"liga","kern";text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:var(--red);text-decoration:none;border-bottom:1px solid rgba(139,0,0,.3)}
+a:hover{border-bottom-color:var(--red)}
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:60;transition:width .05s linear}
+nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 max(16px,4vw);
+  background:rgba(255,255,248,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(207,202,187,.72)
+}
+nav .brand{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--ink);text-transform:uppercase;border:0;white-space:nowrap}
+nav .brand b{color:var(--red)}
+nav .links{display:flex;gap:18px;min-width:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+nav .links::-webkit-scrollbar{display:none}
+nav .links a{color:var(--ink-3);border:0;white-space:nowrap}
+nav .links a:hover{color:var(--red)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(20px,5vw)}
+.measure{max-width:740px}.rule{border:0;border-top:1px solid var(--rule);margin:0}.dim{color:var(--ink-3)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:10px}
+header.hero{padding:calc(var(--nav-h) + 7vh) 0 5vh}
+header.hero h1{font-weight:400;font-style:italic;font-size:clamp(44px,10.2vw,112px);line-height:1.1;letter-spacing:-.02em;margin:0 0 22px;max-width:11ch}header.hero h1 .yr{white-space:nowrap}
+header.hero h1 .pf{color:var(--ink)}
+header.hero h1 .ai{color:var(--red)}
+header.hero .deck{font-style:italic;font-size:clamp(20px,2.6vw,27px);line-height:1.4;color:var(--ink-2);max-width:28ch;margin:0 0 1.1em}
+header.hero .byline{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--ink-3);margin-bottom:2.2em}
+header.hero .byline b{color:var(--ink)}
+.lede p{font-size:21px;color:var(--ink-2);margin:.85em 0}.lede strong{color:var(--ink)}
+.callout{border-left:3px solid var(--red);padding:13px 0 13px 18px;margin:2em 0;background:linear-gradient(90deg,rgba(139,0,0,.045),rgba(139,0,0,0))}
+.callout p{margin:0;font-size:18px;color:var(--ink-2);font-style:italic}.callout .tag{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:6px}
+.bets{margin:2.4em 0}.bets h3{font-size:15px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:400;margin:0 0 12px}
+.bet{display:grid;grid-template-columns:74px 1fr;gap:16px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}.bet:last-child{border-bottom:1px solid var(--rule)}
+.bet .p{font-family:var(--mono);font-size:23px;color:var(--ink);text-align:right;font-weight:700}.bet .p.hi{color:var(--green)}.bet .p.mid{color:var(--ochre)}.bet .p.lo{color:var(--red)}
+.bet .t{font-size:18px;color:var(--ink-2)}.bet .t small{display:block;color:var(--faint);font-size:13.5px;font-family:var(--mono);letter-spacing:.02em;margin-top:2px}
+.plays .bet{grid-template-columns:108px 1fr}.plays .bet .p{font-size:15px;letter-spacing:.03em;padding-top:3px}
+.sechead{padding:6vh 0 1.5vh}.sechead .num{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--faint)}
+.sechead h2{font-weight:700;font-size:clamp(28px,4.6vw,46px);line-height:1.05;margin:.2em 0 .25em;letter-spacing:-.01em}
+.sechead .sub{font-style:italic;font-size:clamp(18px,2.2vw,22px);color:var(--ink-2);max-width:34ch;margin:0}
+.figbox{border:1px solid var(--rule);background:#fffefa;padding:22px 22px 16px;margin:2.2em 0}.figbox .figtitle{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-bottom:4px}.figbox .figsub{font-size:16px;color:var(--ink-3);font-style:italic;margin-bottom:14px}.figbox .watermark{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:#bdb9ac;text-align:right;text-transform:uppercase}
+.timeline{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start;padding-bottom:4vh}.tl-narrative{min-width:0}.tl-year{padding:8vh 0;border-top:1px solid var(--rule)}.tl-year:first-child{border-top:0;padding-top:2vh}
+.tl-year .yr{font-family:var(--mono);font-weight:700;font-size:clamp(46px,8vw,76px);line-height:.9;letter-spacing:-.02em;color:var(--ink)}.tl-year.active .yr{color:var(--red)}
+.tl-year .yrlabel{font-style:italic;font-size:clamp(20px,2.6vw,26px);color:var(--ink-2);margin:.15em 0 .7em;display:block}.tl-year p{font-size:19px;margin:0 0 .9em}
+.tl-year .todo{border-left:3px solid var(--green);padding:4px 0 4px 16px;margin-top:1.1em}.tl-year .todo .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:4px}.tl-year .todo p{font-size:17.5px;color:var(--ink-2);margin:0}
+.tl-viz{position:sticky;top:calc(var(--nav-h) + 16px);align-self:start}.dash{border:1px solid var(--rule-2);background:#fffefa;padding:16px 16px 14px;box-shadow:0 1px 0 rgba(0,0,0,.02)}.dash .dhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}.dash .dtitle{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}.dash .dyear{font-family:var(--mono);font-weight:700;font-size:30px;color:var(--red);line-height:1}.dash .dsub{font-size:14.5px;font-style:italic;color:var(--ink-3);margin:0 0 8px;min-height:2.6em}.dash svg.chart{display:block;width:100%;height:auto}.meters{margin-top:10px;display:flex;flex-direction:column;gap:7px}.meter{display:grid;grid-template-columns:1fr 42px;gap:8px;align-items:center}.meter .ml{font-size:14px;color:var(--ink-2);line-height:1.15}.meter .ml i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:baseline}.meter .track{grid-column:1/3;height:5px;background:#eceadd;border-radius:3px;overflow:hidden;margin-top:2px}.meter .fill{height:100%;width:0;border-radius:3px;transition:width .25s ease}.meter .mv{font-family:var(--mono);font-size:14px;text-align:right;color:var(--ink)}.dash .wm{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#c4c0b3;text-align:right;margin-top:10px}
+.areas-intro{max-width:680px;padding-bottom:1.5vh}.areas-intro p{font-size:19px;color:var(--ink-2);margin:.4em 0 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:2vh 0 4vh}.card{border:1px solid var(--rule-2);background:#fffefa}.card button.cardhead{width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:var(--serif);display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:start;padding:16px 18px;color:var(--ink)}.card button.cardhead:focus-visible{outline:2px solid var(--red);outline-offset:-2px}.card .cnum{font-family:var(--mono);font-size:13px;color:var(--faint);padding-top:4px}.card .ctitle{font-weight:700;font-size:19px;line-height:1.18}.card .ctesis{font-size:15px;color:var(--ink-3);font-style:italic;margin-top:5px;line-height:1.32}.card .cright{display:flex;flex-direction:column;align-items:flex-end;gap:8px}.card .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid currentColor;border-radius:2px;white-space:nowrap}.tag.risk{color:var(--red)}.tag.opp{color:var(--green)}.tag.mix{color:var(--ochre)}.card .spark{width:104px;height:34px;display:block}.card .chev{font-family:var(--mono);color:var(--faint);font-size:14px;transition:transform .25s ease}.card.open .chev{transform:rotate(90deg)}.panel{max-height:0;overflow:hidden;transition:max-height .4s ease;border-top:0}.card.open .panel{border-top:1px solid var(--rule)}.panelin{padding:6px 18px 20px}.panelin .full{font-size:17px;color:var(--ink-2);font-style:italic;margin:12px 0 16px;line-height:1.4}.steps{display:flex;flex-direction:column;gap:0}.step{display:grid;grid-template-columns:58px 1fr;gap:14px;padding:12px 0;border-top:1px dotted var(--rule-2)}.step .syr{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--ink)}.step .sbar{height:4px;background:#eceadd;border-radius:3px;margin-top:8px;overflow:hidden}.step .sbar i{display:block;height:100%;background:var(--ink);border-radius:3px}.card[data-tag="risk"] .step .sbar i{background:var(--red)}.card[data-tag="opp"] .step .sbar i{background:var(--green)}.card[data-tag="mix"] .step .sbar i{background:var(--ochre)}.step .stext{font-size:16px;color:var(--ink-2);line-height:1.4}.step .stext b{color:var(--ink);font-weight:700}.qbox{margin-top:18px;background:#fffef0;border-left:3px solid var(--red);padding:12px 16px}.qbox .ql{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:5px}.qbox p{margin:0;font-size:17px;font-style:italic;color:var(--ink)}.statchip{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--ink-3);background:#f3f1e6;border:1px solid var(--rule);padding:4px 9px;margin-top:14px;letter-spacing:.02em}
+.provoke{background:var(--ink);color:#fffff8;margin-top:6vh}.provoke .wrap{padding-top:9vh;padding-bottom:9vh}.provoke .kicker{color:#e89b9b}.provoke .bigq{font-weight:700;font-size:clamp(28px,5.2vw,56px);line-height:1.1;letter-spacing:-.01em;max-width:18ch;margin:.3em 0 .1em}.provoke .bigq b{color:#ff6b6b;font-weight:700}.provoke .src{font-family:var(--mono);font-size:12px;color:#9a978c;letter-spacing:.04em;margin-top:1.4em}.assume{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:3.4em}.assume .a{border-top:2px solid #5a5a52;padding-top:14px}.assume .a .an{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#ff8a8a;margin-bottom:8px}.assume .a .killed{color:#bdbab0;text-decoration:line-through;text-decoration-color:#ff6b6b;font-size:16px;font-style:italic;display:block;margin-bottom:8px}.assume .a p{margin:0;font-size:16.5px;color:#efeee6;line-height:1.42}
+.dec{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}.deci{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--rule);align-items:start}.deci .dn{font-family:var(--mono);font-weight:700;font-size:22px;color:var(--red);line-height:1}.deci h4{font-weight:700;font-size:19px;margin:0 0 5px;line-height:1.2}.deci p{margin:0;font-size:16.5px;color:var(--ink-3);line-height:1.4}
+.ind{border-top:1px solid var(--rule);padding-top:2vh}.ind .row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--rule)}.ind .row .k{font-size:18px;color:var(--ink)}.ind .row .v{font-family:var(--mono);font-size:13px;color:var(--red);letter-spacing:.02em;text-align:right;max-width:18ch}.closeq{padding:5vh 0}.closeq .q{font-size:clamp(20px,2.8vw,28px);line-height:1.35;font-style:italic;color:var(--ink);padding:18px 0;border-top:1px solid var(--rule);max-width:30ch}.closeq .q:last-of-type{border-bottom:1px solid var(--rule)}.closeq .q .n{font-family:var(--mono);font-style:normal;font-size:13px;color:var(--red);margin-right:14px;letter-spacing:.06em}
+footer{border-top:1px solid var(--rule-2);margin-top:4vh}.footwrap{padding-top:5vh;padding-bottom:7vh}.method h3{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:400;margin:0 0 10px}.method p{font-size:16px;color:var(--ink-3);max-width:760px;margin:0 0 .8em}.sources{font-family:var(--mono);font-size:12.5px;color:var(--faint);line-height:1.7;margin-top:2.4em;letter-spacing:.01em}.sig{margin-top:2.4em;font-size:15px;color:var(--ink-3)}.sig b{color:var(--ink)}
+@media (max-width:900px){body{font-size:18px}nav{padding:0 16px}nav .links{gap:13px;flex:1 1 0;min-width:0;justify-content:flex-end;margin-left:12px;-webkit-overflow-scrolling:touch}.timeline{grid-template-columns:1fr;gap:0}.tl-viz{order:-1;position:sticky;top:var(--nav-h);z-index:20;margin:0 -5vw 1.5vh;padding:0;background:var(--bg);border-bottom:1px solid var(--rule)}.dash{border-left:0;border-right:0}.dash svg{max-height:210px}.grid,.dec,.assume{grid-template-columns:1fr}.card button.cardhead{grid-template-columns:28px 1fr;}.card .cright{grid-column:2;align-items:flex-start;flex-direction:row;flex-wrap:wrap}.bet{grid-template-columns:58px 1fr}.plays .bet{grid-template-columns:96px 1fr}.ind .row{grid-template-columns:1fr}.ind .row .v{text-align:left;max-width:none}header.hero h1{font-size:clamp(42px,13vw,70px)}}
+@media print{nav,#progress,.tl-viz{display:none}.timeline,.grid,.dec,.assume{display:block}.wrap{max-width:none}body{background:white;font-size:12pt}.card .panel{max-height:none}.card{break-inside:avoid;margin:10px 0}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <a class="brand" href="#top">PFIZER&nbsp;ESPAÑA&nbsp;<b>2030</b></a>
+  <div class="links">
+    <a href="#escenario">Escenario</a>
+    <a href="#driver">El motor</a>
+    <a href="#timeline">2026–2030</a>
+    <a href="#areas">Departamentos</a>
+    <a href="#provoke">La pregunta</a>
+    <a href="#decisiones">Qué hacer</a>
+  </div>
+</nav>
+<a id="top"></a>
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">Escenario prospectivo · Comité de Dirección · 2026–2030</span>
+    <h1><span class="pf">Pfizer</span> <span class="ai">España</span>,<span class="yr"> 2026–2030</span></h1>
+    <p class="deck"><em>La productividad individual es defensa. El workflow de lanzamiento es ataque.</em> Un escenario plausible sobre cómo la IA pasa de copiloto individual a integrarse en el flujo de lanzamiento de productos —evidencia, acceso y go-to-market— ante médicos, hospitales, pagadores y el SNS.</p>
+    <p class="byline"><b>NCompany</b> · Néstor Guerra Escohotado &nbsp;—&nbsp; inspirado en el formato de <a href="https://ai-2027.com/" target="_blank" rel="noopener">AI&nbsp;2027</a> y el <a href="https://www.aifuturesmodel.com/" target="_blank" rel="noopener">AI&nbsp;Futures&nbsp;Model</a> · Junio 2026</p>
+    <div class="lede measure">
+      <p>La IA no va a tocar a Pfizer España solo como herramienta de productividad individual. Eso es la <em>defensa</em>: ahorrar tiempo en medical, MLR, marketing o planta. El salto está en el <em>ataque</em>: integrar la IA en el workflow de lanzamiento de productos —donde la evidencia se genera, revisa, adapta y negocia ante médicos, hospitales, farmacia hospitalaria, pagadores, regulador y pacientes— para llegar antes y mejor al mercado.</p>
+      <p>En 2030, una parte relevante de las decisiones sanitarias será asistida por modelos: el hospital comparará alternativas, el pagador simulará impacto presupuestario, el médico llegará con literatura resumida, la farmacia hospitalaria auditará utilización y el regulador exigirá trazabilidad. Pfizer gana si convierte la IA en <strong>evidencia más rápida, acceso más inteligente y compliance más confiable</strong>.</p>
+      <p>El escenario central no es que una AGI sustituya a la filial. Es más concreto: la defensa se agota rápido —cuando todos tienen copiloto, la mejora marginal se aplana— y la ventaja se decide en el ataque, donde medical, access, field, marketing, planta, quality, supply y dirección operan con una capa de agentes supervisados sobre los workflows que de verdad mueven el negocio.</p>
+    </div>
+    <div class="callout measure">
+      <span class="tag">Aviso honesto</span>
+      <p>Esto no es una predicción cerrada. Es un escenario para decidir. El eje no es si llega una AGI antes de 2030, sino cuándo Pfizer España deja de usar la IA solo para ahorrar —defensa— y empieza a usarla para ganar evidencia, acceso y lanzamientos —ataque—, y quién gobierna esa capa.</p>
+    </div>
+    <div class="bets plays measure" id="escenario">
+      <h3>Las tres jugadas · y el cuello de botella</h3>
+      <div class="bet"><div class="p mid">Defensa</div><div class="t">Productividad individual: ahorrar tiempo en medical, MLR, marketing, planta y soporte; resiliencia ante el cliff de patentes (Eliquis, Ibrance, Vyndaqel, Xtandi).<small>El win fácil y el primero. Pero satura: cuando todos tienen copiloto, la mejora marginal se aplana.</small></div></div>
+      <div class="bet"><div class="p hi">Ataque</div><div class="t">El workflow de lanzamiento: del dato clínico al go-to-market en un único flujo integrado.<small>Donde el retorno compone y se repone el cliff: berobenatide en obesidad, la nueva ola de oncología (sigvotatug, atirmociclib), hemofilia (Hympavzi, Beqvez) y las vacunas de nueva generación.</small></div></div>
+      <div class="bet"><div class="p hi">Ecosistema</div><div class="t">El interlocutor también usa IA: farmacia hospitalaria, pagador, gerencia, KOLs y paciente informado.<small>Acceso modelo contra modelo. La red de ensayos y la planta españolas como ventaja, no como coste.</small></div></div>
+      <div class="bet"><div class="p lo">Gobernanza</div><div class="t">El cuello de botella del escalado.<small>O compliance como arquitectura y guardrails desde el inicio, o pilotos que nunca llegan a la cuenta de resultados.</small></div></div>
+    </div>
+  </div>
+</header>
+<hr class="rule">
+<section id="driver">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="num">EL MOTOR EXÓGENO</span>
+      <h2>Lo que se acelera fuera de Pfizer</h2>
+      <p class="sub">Capacidad de agentes, presión de acceso, regulación y adopción por hospitales.</p>
+    </div>
+    <div class="measure">
+      <p class="dim" style="font-size:19px">La ventana crítica no es 2026, sino <strong>2028–2030</strong>: los agentes dejan de ser copilotos individuales —defensa— y empiezan a coordinar el flujo de lanzamiento de extremo a extremo —ataque. En pharma, la adopción no será lineal porque exige validación, trazabilidad, privacidad, gobernanza de datos y revisión humana. Pero el sistema sanitario también adoptará IA, y eso cambiará la negociación de valor.</p>
+    </div>
+    <div class="figbox measure" id="driverfig">
+      <div class="figtitle">Capacidad de los agentes de IA · índice 0–100</div>
+      <div class="figsub">Trayectoria central para Pfizer España. Las líneas de puntos marcan hitos de capacidad relevantes.</div>
+      <svg id="driverChart" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Curva de capacidad de agentes de IA de 2026 a 2030"></svg>
+      <div class="watermark">pfizer·2030 — NCompany</div>
+    </div>
+    <div class="measure">
+      <p class="dim" style="font-size:18px">La tesis operativa: Pfizer España debe dejar de medir IA por herramientas desplegadas y empezar a medirla por workflows rediseñados: launch excellence, evidence rooms, MLR, account planning, RWE, market access, quality, supply y decisión del comité.</p>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+<section id="timeline">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="num">LA LÍNEA TEMPORAL</span>
+      <h2>2026 → 2030, año a año</h2>
+      <p class="sub">Desplázate. El cuadro de mando de la derecha evoluciona con el scroll.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-narrative" id="tlNarrative">
+        <article class="tl-year" data-year="0">
+          <div class="yr">2026</div>
+          <span class="yrlabel">Defensa primero: gobernar antes de escalar</span>
+          <p>La IA entra como <em>defensa</em>: productividad individual con Claude o Copilot. La lección conocida del sector es incómoda: repartir licencias no es adoptar. Si nadie rediseña el flujo, el copiloto se queda en demo. El reto de 2026 no es creatividad, sino control —qué se puede hacer, con qué datos, con qué modelo, con qué revisión y trazabilidad— y elegir el primer workflow que de verdad se rediseña.</p>
+          <p>Medical, access, business support, marketing y planta empiezan a industrializar casos seguros. Field queda inicialmente más restringido, pero se prepara account planning no promocional con materiales aprobados.</p>
+          <div class="todo"><span class="lbl">Cómo actúa Pfizer</span><p>Crear AI governance por riesgo, biblioteca de claims y evidencias, repositorio de prompts aprobados, logging, formación del comité y 8–10 workflows priorizados. Compliance se sienta al inicio, no al final.</p></div>
+        </article>
+        <article class="tl-year" data-year="1">
+          <div class="yr">2027</div>
+          <span class="yrlabel">Del tool al flujo: evidence rooms</span>
+          <p>El driver cambia: deja de ser la herramienta y pasa a ser el flujo. La IA empieza a coordinar tareas —literatura, congresos, guías, materiales, dossieres, briefing de stakeholders, análisis de restricciones y preparación de lanzamientos. La evidencia se vuelve modular. Empieza el ataque.</p>
+          <p>Las evidence rooms se montan por área: oncología (Xtandi y Talzenna en próstata, Lorviqua en pulmón, más el pipeline sigvotatug y atirmociclib), oncohematología (Elrexfio), hemofilia (Hympavzi, Beqvez), vacunas (Abrysvo, Prevenar 20 y la combinada gripe-COVID), I&I (Litfulo, Velsipity) y la preparación de berobenatide en obesidad. La ventaja se desplaza a equipos que integran medical, access, marketing, legal y field.</p>
+          <div class="todo"><span class="lbl">Cómo actúa Pfizer</span><p>Lanzar evidence rooms por área terapéutica, con owner médico, owner access, revisión MLR y dashboard de señales: guías, publicaciones, barreras, acceso por CCAA, hospitales críticos y preguntas de stakeholders.</p></div>
+        </article>
+        <article class="tl-year" data-year="2">
+          <div class="yr">2028</div>
+          <span class="yrlabel">El ecosistema también usa IA</span>
+          <p>Farmacia hospitalaria, gerencias y servicios regionales empiezan a comparar alternativas con herramientas propias: impacto presupuestario, uso real, subpoblaciones, restricciones, outcomes y coste evitado.</p>
+          <p>El acceso se convierte en un entorno <em>modelo contra modelo</em>. El viejo dossier nacional pierde peso frente a paquetes de valor vivos por hospital, CCAA y stakeholder.</p>
+          <div class="todo"><span class="lbl">Cómo actúa Pfizer</span><p>Crear un motor de evidencia viva para market access: supuestos explícitos, sensibilidad presupuestaria, comparadores locales, trazabilidad de fuentes y argumentarios adaptados a farmacia hospitalaria, gerencia y clínica.</p></div>
+        </article>
+        <article class="tl-year" data-year="3">
+          <div class="yr">2029</div>
+          <span class="yrlabel">Gobernar la capa: rediseño por flujos</span>
+          <p>La IA ya no es una herramienta lateral. Cambia roles: MSLs como arquitectos de evidencia, KAMs como gestores de ecosistema, marketing como orquestador modular, compliance como plataforma y planta como sistema predictivo.</p>
+          <p>La organización empieza a medir productividad por ciclos: tiempo de MLR, calidad de respuesta médica, velocidad de preparación de launches, reducción de desviaciones, forecast de supply y progreso de acceso.</p>
+          <div class="todo"><span class="lbl">Cómo actúa Pfizer</span><p>Rediseñar roles e incentivos. Medir uso real de IA por workflow, no por licencia. Crear squads de launch y evidence con medical, access, data, compliance y negocio. Entrenar a mandos medios como traductores de IA.</p></div>
+        </article>
+        <article class="tl-year" data-year="4">
+          <div class="yr">2030</div>
+          <span class="yrlabel">El ataque consolidado: sistema aumentado</span>
+          <p>La ventaja competitiva ya no es “tener IA”, sino convertir datos, evidencia, juicio humano y acción en ciclos de aprendizaje. Pfizer compite como socio de evidencia, acceso y biofabricación, no solo como proveedor de medicamentos.</p>
+          <p>El SNS espera trazabilidad, resultados, valor local, seguridad de suministro y diálogo científico en tiempo real. La planta, los ensayos y la red hospitalaria española se convierten en activos estratégicos dentro de Pfizer global.</p>
+          <div class="todo"><span class="lbl">Cómo actúa Pfizer</span><p>Ofrecer evidencia como servicio: modelos de valor, dashboards de seguimiento, simulaciones presupuestarias, paquetes científicos vivos, supply predictivo y compromisos de outcomes donde sea viable y éticamente defendible.</p></div>
+        </article>
+      </div>
+      <div class="tl-viz">
+        <div class="dash">
+          <div class="dhead"><span class="dtitle">El cruce: defensa → ataque</span><span class="dyear" id="dashYear">2026</span></div>
+          <p class="dsub" id="dashSub">Gobernanza, seguridad y primeros workflows.</p>
+          <svg id="dashChart" viewBox="0 0 560 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Gráfica de indicadores de transformación IA de Pfizer España"></svg>
+          <div class="meters" id="meters"></div>
+          <div class="wm">pfizer·2030 — NCompany / Néstor Guerra</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+<section id="areas">
+  <div class="wrap">
+    <div class="sechead"><span class="num">EL INFORME DE IMPACTO</span><h2>Departamentos, cinco años</h2><p class="sub">Pulsa cada área para abrirla y ver cómo progresa de 2026 a 2030.</p></div>
+    <div class="areas-intro"><p>Cada bloque sigue el escenario central. La barra de cada año mide intensidad de cambio; la etiqueta sitúa al área en el marco: <b>defensa</b> (productividad), <b>ataque</b> (evidencia, acceso y lanzamiento) o <b>gobernanza</b> (la capa que hay que controlar para que el ataque escale).</p></div>
+    <div class="grid" id="areaGrid"></div>
+  </div>
+</section>
+<section class="provoke" id="provoke">
+  <div class="wrap">
+    <span class="kicker">El escenario provocador</span>
+    <p class="bigq">La pregunta del 27 no es cuánto invertimos en IA. <b>Sino qué parte de Pfizer España queremos que sea agéntica para el 28 — y cuál no.</b></p>
+    <p class="src">La utilidad del escenario es provocar la conversación correcta. Rompe tres supuestos cómodos:</p>
+    <div class="assume">
+      <div class="a"><div class="an">Supuesto 1</div><span class="killed">«La IA es una herramienta interna de productividad.»</span><p>También será el nuevo interlocutor del hospital, del pagador, del regulador y del paciente informado.</p></div>
+      <div class="a"><div class="an">Supuesto 2</div><span class="killed">«Compliance ralentiza inevitablemente la innovación.»</span><p>Puede hacer lo contrario si diseña guardrails, claims trazables, auditoría automática y revisión proporcional al riesgo.</p></div>
+      <div class="a"><div class="an">Supuesto 3</div><span class="killed">«El valor está en generar más contenido.»</span><p>El valor estará en generar evidencia más fiable, más local, más rápida y más útil para la decisión sanitaria.</p></div>
+    </div>
+  </div>
+</section>
+<section id="decisiones">
+  <div class="wrap">
+    <div class="sechead"><span class="num">¿ESTAMOS PREPARADOS?</span><h2>Ocho decisiones para el comité</h2><p class="sub">Lo que llevaría a la mesa antes de 2030.</p></div>
+    <div class="dec">
+      <div class="deci"><div class="dn">1</div><div><h4>AI governance por riesgo</h4><p>No una política genérica. Matriz clara: interno, promocional, médico, regulatorio, pacientes, proveedores, datos personales y automatización de decisión.</p></div></div>
+      <div class="deci"><div class="dn">2</div><div><h4>Evidence rooms por área terapéutica</h4><p>Oncología (Xtandi, Talzenna, sigvotatug), hemofilia/raras (Hympavzi, Beqvez, Vyndaqel), vacunas (Abrysvo, Prevenar 20), I&I (Litfulo, Velsipity) y obesidad (berobenatide): evidencia viva con owner, fuentes, versión y revisión.</p></div></div>
+      <div class="deci"><div class="dn">3</div><div><h4>Motor de acceso local</h4><p>Modelos por CCAA, hospital y stakeholder: impacto presupuestario, comparadores, subpoblaciones, restricciones y sensibilidad.</p></div></div>
+      <div class="deci"><div class="dn">4</div><div><h4>Field y KAMs aumentados</h4><p>Account planning supervisado, no improvisado: stakeholders, barreras, materiales aprobados, evidencia y next-best-action trazable.</p></div></div>
+      <div class="deci"><div class="dn">5</div><div><h4>MLR aumentado</h4><p>Claims preaprobados, biblioteca de evidencias, precheck automático, control de fuentes y revisión humana proporcional al riesgo.</p></div></div>
+      <div class="deci"><div class="dn">6</div><div><h4>Planta como caso estrella</h4><p>Gemelos digitales, desviaciones, CAPAs, auditorías, forecast de supply y narrativa institucional de biofabricación estratégica.</p></div></div>
+      <div class="deci"><div class="dn">7</div><div><h4>RWE y ensayos aumentados</h4><p>Feasibility, reclutamiento, biomarcadores, outcomes, calidad de vida, adherencia y datos federados con hospitales de referencia.</p></div></div>
+      <div class="deci"><div class="dn">8</div><div><h4>Scorecard de transformación</h4><p>Medir IA por ciclos de negocio: tiempo MLR, respuesta médica, progreso de acceso, launch readiness, productividad, calidad y riesgo.</p></div></div>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+<section id="indicadores">
+  <div class="wrap">
+    <div class="sechead"><span class="num">SEÑALES TEMPRANAS</span><h2>Qué vigilar en 2026–2027</h2><p class="sub">El escenario se actualiza cuando cambian estas señales.</p></div>
+    <div class="ind">
+      <div class="row"><span class="k">Agentes de coding y workflows capaces de sostener tareas largas sin supervisión constante</span><span class="v">Adelanta el ataque</span></div>
+      <div class="row"><span class="k">Farmacia hospitalaria o CCAA usando IA para comparar tratamientos e impacto presupuestario</span><span class="v">Sube ecosistema algorítmico</span></div>
+      <div class="row"><span class="k">EMA/AEMPS aceptando más evidencia generada o asistida por IA con supervisión humana</span><span class="v">Sube la evidencia viva</span></div>
+      <div class="row"><span class="k">Pfizer España reduce ciclos MLR sin aumentar riesgo de compliance</span><span class="v">Madura la defensa</span></div>
+      <div class="row"><span class="k">La planta demuestra mejoras adicionales en yield, desviaciones o documentación GMP</span><span class="v">Refuerza la defensa operativa</span></div>
+      <div class="row"><span class="k">Incidente sectorial por alucinación médica, fuga de datos o uso promocional indebido</span><span class="v">Sube el riesgo de gobernanza</span></div>
+    </div>
+  </div>
+</section>
+<section class="closeq">
+  <div class="wrap">
+    <div class="sechead"><span class="num">CINCO PREGUNTAS FINALES</span><h2>Para cerrar la sesión</h2></div>
+    <div class="q"><span class="n">01</span>¿En qué seguimos usando la IA como defensa —ahorro de tiempo— cuando el retorno real ya está en el ataque: evidencia, acceso y lanzamiento?</div>
+    <div class="q"><span class="n">02</span>¿Dónde es más peligroso que Pfizer vaya por detrás: medical, access, field, compliance o planta?</div>
+    <div class="q"><span class="n">03</span>¿Qué workflows se rediseñan de verdad en 2026, no solo se “copilotizan”?</div>
+    <div class="q"><span class="n">04</span>¿Qué datos locales necesita Pfizer para negociar contra un pagador algorítmico?</div>
+    <div class="q"><span class="n">05</span>¿Qué no debería automatizar Pfizer aunque técnicamente pueda hacerlo?</div>
+  </div>
+</section>
+<footer>
+  <div class="wrap footwrap">
+    <div class="method"><h3>Método</h3><p>Escenario construido sobre tres ejes: el marco defensa→ataque —la IA como capa de negocio, no solo de productividad—; la realidad operativa de Pfizer España —medical, market access, field, marketing, planta, quality, supply, RWE y la relación con el SNS—; y la trayectoria de capacidad de los agentes de IA. Es una herramienta de conversación estratégica para el comité, no un forecast determinista.</p></div>
+    <div class="sources">Fuentes internas del proyecto: informes de Pfizer España, briefing del offsite del comité, AI Futures Model, AI-2027 y marcos de superforecasting y economía de la predicción. Marco defensa→ataque y cuadro de mando elaborados por NCompany. Los nombres de producto (cartera actual y pipeline hasta 2030) se usan como ilustración del escenario, no como afirmaciones sobre planes comerciales concretos de Pfizer.</div>
+    <div class="sig"><b>Néstor Guerra</b> · NCompany · Comité de Dirección Pfizer España · Junio 2026</div>
+  </div>
+</footer>
+<script>
+"use strict";
+(function(){
+  var COLORS={ink:'#111111',red:'#8b0000',green:'#2a623d',blue:'#2c5985',ochre:'#8a5e00',rule:'#cfcabb',faint:'#8c8a80'};
+  var YEARS=[2026,2027,2028,2029,2030];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  function el(name,attrs){var e=document.createElementNS(NS,name);if(attrs)for(var k in attrs)e.setAttribute(k,attrs[k]);return e;}
+  function clamp(v,a,b){return v<a?a:(v>b?b:v);}
+  function lerp(a,b,f){return a+(b-a)*f;}
+  // Curva exógena: capacidad de agentes (motor). Se dibuja en la sección #driver.
+  var CAP=[22,38,61,79,92];
+  // Cuadro de mando: la migración de defensa a ataque. El cruce ocurre hacia 2028.
+  var METRICS=[
+    {key:'def',label:'Defensa · productividad individual',color:COLORS.ochre,vals:[34,60,67,70,72]},
+    {key:'atk',label:'Ataque · workflow de lanzamiento',color:COLORS.red,vals:[9,30,62,82,95]},
+    {key:'eco',label:'Ecosistema algorítmico',color:COLORS.green,vals:[12,28,50,70,86]},
+    {key:'gov',label:'Madurez MLR / gobernanza',color:COLORS.blue,vals:[16,36,56,74,88]}
+  ];
+  var SUBS=['Defensa: productividad individual. El copiloto deslumbra; el flujo aún no.','El driver cambia: del tool al workflow de lanzamiento.','El ataque alcanza a la defensa. El ecosistema también usa IA.','Gobernar la capa: roles por flujo, no por licencia.','Pfizer gana acceso y lanzamientos: la evidencia como sistema vivo.'];
+  function drawDriver(){
+    var svg=document.getElementById('driverChart');if(!svg)return;while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var W=640,H=300,padL=40,padR=24,padT=34,padB=40;
+    var x=function(yr){return padL+(yr-2026)/4*(W-padL-padR);};var y=function(v){return H-padB-(v/100)*(H-padT-padB);};
+    [0,50,100].forEach(function(g){svg.appendChild(el('line',{x1:padL,y1:y(g),x2:W-padR,y2:y(g),stroke:COLORS.rule,'stroke-width':g===0?1:0.6,'stroke-dasharray':g===0?'':'2 4'}));var t=el('text',{x:padL-8,y:y(g)+4,'text-anchor':'end','font-family':'var(--mono)','font-size':10,fill:COLORS.faint});t.textContent=g;svg.appendChild(t);});
+    YEARS.forEach(function(yr){var t=el('text',{x:x(yr),y:H-padB+18,'text-anchor':'middle','font-family':'var(--mono)','font-size':11,fill:COLORS.faint});t.textContent=yr;svg.appendChild(t);});
+    [{yr:2028,l:'Agentes workflow'},{yr:2030,l:'IA top-expert'}].forEach(function(m){svg.appendChild(el('line',{x1:x(m.yr),y1:padT-8,x2:x(m.yr),y2:H-padB,stroke:COLORS.red,'stroke-width':0.8,'stroke-dasharray':'2 3',opacity:.55}));var t=el('text',{x:x(m.yr),y:padT-12,'text-anchor':m.yr===2030?'end':'middle','font-family':'var(--mono)','font-size':9.5,fill:COLORS.red,opacity:.8});t.textContent=m.l;svg.appendChild(t);});
+    var cap=CAP,pts=[];for(var i=0;i<YEARS.length-1;i++){for(var s=0;s<=14;s++){var f=s/14,ff=(1-Math.cos(f*Math.PI))/2;pts.push([x(lerp(YEARS[i],YEARS[i+1],f)),y(lerp(cap[i],cap[i+1],ff))]);}}
+    var d='M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' L');var area=d+' L'+x(2030)+' '+y(0)+' L'+x(2026)+' '+y(0)+' Z';
+    svg.appendChild(el('path',{d:area,fill:COLORS.ink,opacity:.05}));svg.appendChild(el('path',{d:d,fill:'none',stroke:COLORS.ink,'stroke-width':2.2,'stroke-linejoin':'round'}));
+    YEARS.forEach(function(yr,i){svg.appendChild(el('circle',{cx:x(yr),cy:y(cap[i]),r:3.4,fill:'#fffff8',stroke:COLORS.ink,'stroke-width':1.6}));var t=el('text',{x:x(yr),y:y(cap[i])-10,'text-anchor':'middle','font-family':'var(--mono)','font-size':10.5,fill:COLORS.ink});t.textContent=cap[i];svg.appendChild(t);});
+  }
+  var dashSvg=document.getElementById('dashChart');var dGeom={W:560,H:300,padL:34,padR:18,padT:18,padB:34};
+  function dx(yr){return dGeom.padL+(yr-2026)/4*(dGeom.W-dGeom.padL-dGeom.padR);}function dy(v){return dGeom.H-dGeom.padB-(v/100)*(dGeom.H-dGeom.padT-dGeom.padB);}var dynLayer;
+  function buildDashStatic(){while(dashSvg.firstChild)dashSvg.removeChild(dashSvg.firstChild);[0,50,100].forEach(function(g){dashSvg.appendChild(el('line',{x1:dGeom.padL,y1:dy(g),x2:dGeom.W-dGeom.padR,y2:dy(g),stroke:COLORS.rule,'stroke-width':g===0?1:0.6,'stroke-dasharray':g===0?'':'2 4'}));});YEARS.forEach(function(yr){var t=el('text',{x:dx(yr),y:dGeom.H-dGeom.padB+18,'text-anchor':'middle','font-family':'var(--mono)','font-size':11,fill:COLORS.faint});t.textContent=yr;dashSvg.appendChild(t);});METRICS.forEach(function(m){var dd='M'+YEARS.map(function(yr,i){return dx(yr)+' '+dy(m.vals[i]);}).join(' L');dashSvg.appendChild(el('path',{d:dd,fill:'none',stroke:m.color,'stroke-width':1,opacity:.16}));});dynLayer=el('g',{});dashSvg.appendChild(dynLayer);}
+  function partial(vals,t){var res=[];for(var i=0;i<YEARS.length;i++){if(YEARS[i]<=t){res.push([dx(YEARS[i]),dy(vals[i]),vals[i]]);}else{var p=i-1;if(p>=0){var f=(t-YEARS[p])/(YEARS[i]-YEARS[p]);res.push([dx(lerp(YEARS[p],YEARS[i],f)),dy(lerp(vals[p],vals[i],f)),lerp(vals[p],vals[i],f)]);}break;}}return res;}
+  function buildMeters(){var box=document.getElementById('meters');METRICS.forEach(function(m){var row=document.createElement('div');row.className='meter';row.innerHTML='<div class="ml"><i style="background:'+m.color+'"></i>'+m.label+'</div><div class="mv" id="mv_'+m.key+'">0</div><div class="track"><div class="fill" id="mf_'+m.key+'" style="background:'+m.color+'"></div></div>';box.appendChild(row);});}
+  function drawDash(t){if(!dynLayer)return;while(dynLayer.firstChild)dynLayer.removeChild(dynLayer.firstChild);dynLayer.appendChild(el('line',{x1:dx(t),y1:dGeom.padT,x2:dx(t),y2:dGeom.H-dGeom.padB,stroke:COLORS.faint,'stroke-width':0.8,'stroke-dasharray':'1 3'}));METRICS.forEach(function(m){var pts=partial(m.vals,t);if(!pts.length)return;var d='M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' L');dynLayer.appendChild(el('path',{d:d,fill:'none',stroke:m.color,'stroke-width':2.1,'stroke-linejoin':'round','stroke-linecap':'round'}));var last=pts[pts.length-1];dynLayer.appendChild(el('circle',{cx:last[0],cy:last[1],r:3.6,fill:'#fffff8',stroke:m.color,'stroke-width':2}));var cur=Math.round(last[2]);var mv=document.getElementById('mv_'+m.key);if(mv)mv.textContent=cur;var mf=document.getElementById('mf_'+m.key);if(mf)mf.style.width=cur+'%';});}
+  var narrative=document.getElementById('tlNarrative'),dashYearEl=document.getElementById('dashYear'),dashSubEl=document.getElementById('dashSub'),yearBlocks=[].slice.call(document.querySelectorAll('.tl-year'));var lastIdx=-1,curT=2026,targetT=2026,rafing=false;
+  function computeTargetT(){if(!narrative)return 2026;var r=narrative.getBoundingClientRect(),vh=window.innerHeight,anchor=vh*.46,p=(anchor-r.top)/Math.max(r.height,1);p=clamp(p,0,1);return 2026+p*4;}
+  function setActiveYear(t){var idx=clamp(Math.round((t-2026)),0,4);if(idx!==lastIdx){lastIdx=idx;if(dashYearEl)dashYearEl.textContent=YEARS[idx];if(dashSubEl)dashSubEl.textContent=SUBS[idx];yearBlocks.forEach(function(b,i){b.classList.toggle('active',i===idx);});}}
+  function tick(){rafing=false;if(reduce){curT=targetT;}else{curT+=(targetT-curT)*.18;if(Math.abs(targetT-curT)<.01)curT=targetT;}drawDash(curT);setActiveYear(curT);if(!reduce&&Math.abs(targetT-curT)>.001){rafing=true;requestAnimationFrame(tick);}}
+  function onScroll(){targetT=computeTargetT();if(!rafing){rafing=true;requestAnimationFrame(tick);}var sc=document.documentElement,pct=sc.scrollTop/Math.max(sc.scrollHeight-sc.clientHeight,1),pb=document.getElementById('progress');if(pb)pb.style.width=(pct*100)+'%';}
+  var AREAS=[
+    {n:'01',title:'Dirección General y Comité',tag:'risk',tagL:'Gobierno',tesis:'La IA pasa de herramienta a sistema de decisión del comité.',full:'El comité debe gobernar trade-offs: velocidad vs. control, acceso vs. margen, automatización vs. confianza y global vs. local.',I:[25,42,58,72,86],y:[['Crea AI Steering Board y mapa de usos por riesgo.','Alinea negocio, medical, access, compliance, legal, data, digital y planta.'],['Introduce AI scorecard en business reviews.','No mide prompts; mide ciclos, calidad, riesgos y decisiones.'],['Decisiones con escenarios y sensibilidad.','El comité trabaja con probabilidades y señales de actualización.'],['El cerebro corporativo (company brain) en Obsidian.','Memoria institucional viva en markdown: decisiones, evidencia, claims y señales conectadas en un grafo que el comité y los agentes consultan como fuente única. Roles y presupuestos se rediseñan a su alrededor.'],['El comité opera sobre el cerebro corporativo.','Sistema aumentado: los humanos deciden los trade-offs, los agentes preparan el análisis sobre el company brain y la memoria se actualiza sola.']],q:'¿Qué decisiones del comité deberían ser probabilísticas y asistidas por agentes desde 2026?'},
+    {n:'02',title:'Medical Affairs y MSLs',tag:'opp',tagL:'Ataque',tesis:'Medical se convierte en la autoridad de evidencia viva.',full:'La IA reduce tiempo de búsqueda y síntesis, pero aumenta el valor del juicio médico, la calidad metodológica y la interpretación de incertidumbre.',I:[28,48,68,80,90],y:[['Literatura, congresos, guías y respuestas médicas asistidas.','Todo con fuentes verificables y revisión humana.'],['Copilotos de MSL y mapas de KOLs.','Preparan conversaciones científicas más contextuales.'],['Evidence rooms por área.','Oncología (Xtandi, Talzenna, sigvotatug), hemofilia (Hympavzi, Beqvez), vacunas (Abrysvo, Prevenar 20) e I&I (Litfulo, Velsipity) con evidencia modular.'],['RWE y subpoblaciones ganan peso.','Medical valida supuestos clínicos de access y marketing.'],['Medical gobierna outputs científicos de IA.','Menos recopilación manual; más criterio, ética e interpretación.']],q:'¿Qué evidencia queremos poder actualizar en días, no en meses?'},
+    {n:'03',title:'Market Access y Government Affairs',tag:'opp',tagL:'Ataque',tesis:'El acceso se vuelve modelo contra modelo.',full:'El pagador usará IA para evaluar valor, restricciones, outcomes e impacto presupuestario. Pfizer necesita modelos locales trazables, sobre todo para defender el acceso de los lanzamientos que reponen el cliff: obesidad, nueva oncología y vacunas.',I:[26,44,67,82,92],y:[['Modelos base por CCAA y hospital.','Impacto presupuestario, restricciones, BIFIMED/CIMA/IPT y pipeline.'],['Dossieres vivos por stakeholder.','No un único documento nacional, sino paquetes trazables.'],['Farmacia hospitalaria audita con IA.','Pfizer responde con supuestos claros y sensibilidad.'],['Acuerdos de valor donde sean viables.','Outcomes, subgrupos y costes evitados.'],['Access como inteligencia territorial.','Evidencia, policy, datos y negociación en un sistema vivo.']],q:'¿Qué dato local nos faltaría si mañana una CCAA nos negocia con su propio copiloto?'},
+    {n:'04',title:'Marketing, Omnichannel y BUs',tag:'mix',tagL:'Defensa',tesis:'De campañas a journeys modulares aprobados.',full:'La generación de contenido se abarata. La escasez real será relevancia, diferenciación, autorización y trazabilidad del claim.',I:[22,38,58,73,84],y:[['Research, mensajes y modular content.','MLR desde el diseño, no al final.'],['Journeys por stakeholder.','Especialista, farmacia hospitalaria, gerencia, enfermería, paciente y pagador.'],['Secuencias omnicanal recomendadas por agentes.','Siempre dentro de bibliotecas aprobadas.'],['Marketing orquesta experiencias científicas.','Menos campaña anual; más señal contextual.'],['Contenido como interfaz de evidencia.','La pieza importa menos que el sistema que la actualiza.']],q:'¿Qué contenido dejaría de producir marketing si medical y access tuvieran evidencia viva?'},
+    {n:'05',title:'Field, KAMs y red comercial',tag:'opp',tagL:'Ataque',tesis:'El KAM pasa de transmisor a gestor de ecosistema.',full:'La fuerza de campo gana valor si conecta ciencia, acceso, circuito hospitalario, farmacia, gerencia y necesidades locales.',I:[18,32,52,70,84],y:[['Pilotos seguros de account planning.','Briefing de cuenta, stakeholders, barreras y materiales aprobados.'],['Account copilots supervisados.','Preparación con contexto hospitalario y next-best-action.'],['Conversación más analítica.','El hospital llega con dashboards y preguntas concretas.'],['KAM como integrador.','Coordina medical, access, farmacia, gerencia y field.'],['Gestor de ecosistema sanitario.','Menos mensaje; más resolución de barreras.']],q:'¿Qué parte del trabajo de campo debería seguir siendo humana precisamente porque la IA lo hace todo más analítico?'},
+    {n:'06',title:'Compliance, Legal, Privacy y Regulatory',tag:'risk',tagL:'Riesgo',tesis:'Puede ser freno o ventaja reputacional.',full:'La diferencia está entre revisar todo al final o diseñar guardrails desde el inicio: claims, fuentes, prompts, logging, revisión y auditoría.',I:[35,55,72,84,92],y:[['Matriz de riesgo IA.','Interno, promocional, médico, regulatorio, datos personales y proveedores.'],['Guardrails integrados.','Claims preaprobados, bibliotecas, control de fuentes y registro.'],['AI-MLR prechequea materiales.','Detecta inconsistencias, referencias débiles y riesgos.'],['Compliance como plataforma.','Revisión proporcional al riesgo y menos fricción.'],['Confianza auditable.','Pfizer puede demostrar cómo usa IA, no solo decirlo.']],q:'¿Qué decisiones de IA serían inaceptables aunque aumentaran ventas o velocidad?'},
+    {n:'07',title:'I+D, Clinical Operations y RWE',tag:'opp',tagL:'Ataque',tesis:'España puede ser nodo global de evidencia aumentada.',full:'La red de ensayos y hospitales permite reforzar feasibility, reclutamiento, biomarcadores, outcomes, calidad de vida y adherencia.',I:[20,38,58,75,88],y:[['Feasibility y documentación asistida.','Criterios, centros, desviaciones y seguimiento.'],['Reclutamiento y operaciones más ágiles.','Menos fricción operativa en ensayos.'],['Datos reales y subpoblaciones.','RWE conectado a necesidades de access.'],['España como nodo para global.','Cohortes, biomarcadores, adherencia y calidad de vida.'],['Evidencia federada y trazable.','Colaboración hospitalaria con gobernanza de datos.']],q:'¿Qué pregunta clínica o de acceso podríamos responder en España antes que otros países?'},
+    {n:'08',title:'Planta, Quality y Supply Chain',tag:'mix',tagL:'Defensa',tesis:'La planta se convierte en relato estratégico de IA.',full:'La ventaja local no está solo en vender. Está en fabricar, exportar, garantizar suministro y aprender con IA industrial.',I:[30,48,64,79,90],y:[['Gemelos digitales y mantenimiento predictivo.','Cuellos de botella, energía, desviaciones y documentación GMP.'],['Quality aumentado.','CAPAs, auditorías, investigación de desviaciones y aprendizaje entre lotes.'],['Supply predictivo.','Demanda por producto, CCAA, canal, lanzamiento y estacionalidad.'],['Planta conectada al negocio.','Forecast de acceso, riesgo de stock y planificación.'],['Biofabricación estratégica.','Seguridad de suministro, empleo cualificado y soberanía biomédica.']],q:'¿Estamos contando la IA desde oficina o desde la ventaja industrial única de Pfizer España?'},
+    {n:'09',title:'Digital, Data, IT y Commercial Excellence',tag:'risk',tagL:'Arquitectura',tesis:'Sin arquitectura, la IA solo genera ruido más rápido.',full:'El valor depende de datos limpios, permisos, taxonomías, owners, evaluación de modelos, APIs y observabilidad de agentes.',I:[32,50,70,84,94],y:[['Ordenar datos, accesos y herramientas aprobadas.','Evitar shadow AI con alternativas útiles.'],['Catálogo de agentes internos.','Literatura, account planning, dashboards, MLR, forecast, RWE, supply y finance.'],['Commercial Excellence como cerebro de señales.','Adopción, acceso, engagement, barreras y productividad.'],['Observabilidad de agentes.','Quién decidió, con qué dato, bajo qué regla y resultado.'],['Capa corporativa de IA.','Modelos, datos, permisos, métricas y auditoría.']],q:'¿Qué dato crítico de Pfizer España no está aún preparado para agentes?'},
+    {n:'10',title:'Finance, Procurement, HR y Business Support',tag:'mix',tagL:'Defensa',tesis:'Las áreas soporte deciden si la adopción escala o se queda en pilotos.',full:'Finance mide ROI; procurement reduce riesgo de vendors; HR rediseña roles; business support automatiza coordinación y reporting.',I:[20,36,55,72,86],y:[['Finance y HR crean baseline.','Horas, ciclos, costes, capacidades y formación.'],['Procurement evalúa proveedores IA.','Riesgo de datos, dependencia, seguridad y contratos.'],['Business support automatiza coordinación.','Reporting, reuniones, actas, seguimiento y PMO.'],['Upskilling de mandos medios.','Traductores entre negocio, IA y compliance.'],['Nuevo modelo operativo.','Roles, incentivos y capacidades actualizados.']],q:'¿Qué hacemos con cada hora liberada por IA: coste, calidad, velocidad o crecimiento?'}
+  ];
+  function sparkPath(vals,W,H,pad){var max=100,xs=function(i){return pad+i/(vals.length-1)*(W-2*pad);},ys=function(v){return H-pad-(v/max)*(H-2*pad);};return {d:'M'+vals.map(function(v,i){return xs(i).toFixed(1)+' '+ys(v).toFixed(1);}).join(' L'),xs:xs,ys:ys};}
+  function buildAreas(){var grid=document.getElementById('areaGrid');AREAS.forEach(function(a){var card=document.createElement('div');card.className='card';card.setAttribute('data-tag',a.tag);var tagClass=a.tag==='risk'?'risk':(a.tag==='opp'?'opp':'mix');var col=a.tag==='risk'?COLORS.red:(a.tag==='opp'?COLORS.green:COLORS.ochre);var sp=sparkPath(a.I,104,34,5);var spark='<svg class="spark" viewBox="0 0 104 34" preserveAspectRatio="none" aria-hidden="true"><path d="'+sp.d+'" fill="none" stroke="'+col+'" stroke-width="1.8" stroke-linejoin="round"/><circle cx="'+sp.xs(4).toFixed(1)+'" cy="'+sp.ys(a.I[4]).toFixed(1)+'" r="2.6" fill="'+col+'"/></svg>';var steps='';a.y.forEach(function(row,i){steps+='<div class="step"><div><div class="syr">'+YEARS[i]+'</div><div class="sbar"><i style="width:'+a.I[i]+'%"></i></div></div><div class="stext"><b>'+row[0]+'</b> '+row[1]+'</div></div>';});card.innerHTML='<button class="cardhead" aria-expanded="false"><div class="cnum">'+a.n+'</div><div><div class="ctitle">'+a.title+'</div><div class="ctesis">'+a.tesis+'</div></div><div class="cright"><span class="tag '+tagClass+'">'+a.tagL+'</span>'+spark+'<span class="chev">▸</span></div></button><div class="panel"><div class="panelin"><div class="full">'+a.full+'</div><div class="steps">'+steps+'</div><div class="qbox"><span class="ql">Pregunta para el comité</span><p>'+a.q+'</p></div></div></div>';grid.appendChild(card);var btn=card.querySelector('.cardhead'),panel=card.querySelector('.panel');btn.addEventListener('click',function(){var open=card.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');panel.style.maxHeight=open?(panel.scrollHeight+40)+'px':'0px';});});}
+  function init(){drawDriver();buildDashStatic();buildMeters();buildAreas();drawDash(2026);setActiveYear(2026);window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',function(){drawDriver();buildDashStatic();drawDash(curT);document.querySelectorAll('.card.open .panel').forEach(function(p){p.style.maxHeight=(p.scrollHeight+40)+'px';});});onScroll();}
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(init);}else{init();}
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){link.addEventListener('click',function(e){var id=link.getAttribute('href');if(id.length<2)return;var t=document.querySelector(id);if(!t)return;e.preventDefault();var y=t.getBoundingClientRect().top+window.pageYOffset-56;window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});});});
+})();
+</script>
+</body>
+</html>
